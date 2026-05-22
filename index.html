@@ -1,5 +1,421 @@
-<html>
-  <body>
-    Hello World..
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jatin Padichatira Mohan | Software Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #0B0F17;
+            --bg-card: #151B26;
+            --accent: #38BDF8;
+            --accent-muted: rgba(56, 189, 248, 0.15);
+            --text-main: #E2E8F0;
+            --text-muted: #94A3B8;
+            --border: #232D3F;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header section */
+        header {
+            margin-bottom: 3.5rem;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #FFFFFF, #94A3B8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            list-style: none;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .contact-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: color 0.2s ease;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Layout Grid */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        section {
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #FFFFFF;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        h2 i {
+            color: var(--accent);
+            font-size: 1.25rem;
+        }
+
+        /* Experience cards */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .exp-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .exp-item:hover {
+            transform: translateY(-2px);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .role-company h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+
+        .time-loc {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--accent);
+            background: var(--accent-muted);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        .exp-bullets {
+            padding-left: 1.25rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .exp-bullets li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Skills badges */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-badge span {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media(min-width: 640px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card h4 {
+            font-size: 1.1rem;
+            color: #FFFFFF;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Education & Achievements list */
+        .plain-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .plain-list li {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .plain-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-family: var(--font-mono);
+        }
+
+        .edu-item h4 {
+            color: #FFFFFF;
+            font-size: 1rem;
+        }
+
+        .edu-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        footer {
+            margin-top: 5rem;
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Jatin Padichatira Mohan</h1>
+            <div class="subtitle">Software Developer @ Google</div>
+            <ul class="contact-links">
+                <li><a href="mailto:jatinpm96@gmail.com"><i class="ri-mail-line"></i> jatinpm96@gmail.com</a></li>
+                <li><a href="tel:+919632598043"><i class="ri-phone-line"></i> (+91) 9632598043</a></li>
+                <li><a href="https://www.linkedin.com/in/jatin-p-m-4a4009ba" target="_blank"><i class="ri-linkedin-box-line"></i> LinkedIn</a></li>
+                <li><a href="#"><i class="ri-map-pin-line"></i> Bangalore, India</a></li>
+            </ul>
+        </header>
+
+        <div class="grid-layout">
+            <!-- Left/Main Column -->
+            <div class="main-col">
+                
+                <!-- Experience Section -->
+                <section id="experience">
+                    <h2><i class="ri-briefcase-line"></i> Work Experience</h2>
+                    <div class="timeline">
+                        <div class="exp-item">
+                            <div class="exp-header">
+                                <div class="role-company">
+                                    <h3>Software Developer</h3>
+                                    <div style="color: var(--text-muted); font-size: 0.95rem;">Google</div>
+                                </div>
+                                <div class="time-loc">2022 - 2026</div>
+                            </div>
+                            <ul class="exp-bullets">
+                                <li>Led the integration of automated capacity request assessment, streamlining demand netting and fulfillment processes on the Horizon platform.</li>
+                                <li>Designed and developed the ingestion of FutureReservation requests into the Oblix system, enhancing planner visualization for faster assessment and approvals.</li>
+                                <li>Orchestrated the successful MVP and M2 launches of the Horizon platform system.</li>
+                                <li>Devised solutions to guide request creation, ensuring optimal request grouping for reduced customer latencies.</li>
+                            </ul>
+                        </div>
+
+                        <div class="exp-item">
+                            <div class="exp-header">
+                                <div class="role-company">
+                                    <h3>Software Engineer</h3>
+                                    <div style="color: var(--text-muted); font-size: 0.95rem;">WalmartLabs</div>
+                                </div>
+                                <div class="time-loc">2018 - 2022</div>
+                            </div>
+                            <ul class="exp-bullets">
+                                <li>Help build a Financial Modeling tool for Walmart US, International market to help with investment decisions related to store creation, conversion, expansion, and relocation. Helped save 2.4M dollars per year in investment by replacing the existing legacy system.</li>
+                                <li>Worked on an Onboarding tool for Walmart IDC from the ground up.</li>
+                                <li>Created an HR Chat-Bot for WMGTS, with leave management, HR policy questions, etc.</li>
+                                <li>Worked on various HR tech to enable associate ratings, MIP, and RSU management for WMGTS.</li>
+                                <li>Worked with various Azure Tech (WebApps, Docker deployments, Key Vault, FunctionApps, CosmosDB, RedisCache, etc).</li>
+                            </ul>
+                        </div>
+
+                        <div class="exp-item">
+                            <div class="exp-header">
+                                <div class="role-company">
+                                    <h3>Intern</h3>
+                                    <div style="color: var(--text-muted); font-size: 0.95rem;">WalmartLabs</div>
+                                </div>
+                                <div class="time-loc">8 Months</div>
+                            </div>
+                            <ul class="exp-bullets">
+                                <li>Worked on Microsoft Bot Framework SDK to design chatbots for internal Walmart teams.</li>
+                                <li>Worked on Power BI to implement an analytics dashboard with role management.</li>
+                                <li>Worked on SSO Authentication for the chatbot using SAML 2.0.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Skills Section -->
+                <section id="skills" style="margin-top: 1rem;">
+                    <h2><i class="ri-code-s-slash-line"></i> Skills</h2>
+                    <div class="skills-container">
+                        <div class="skill-badge" style="border-color: var(--accent)">GoLang <span>Expert</span></div>
+                        <div class="skill-badge" style="border-color: var(--accent)">React.js <span>Expert</span></div>
+                        <div class="skill-badge" style="border-color: var(--accent)">Azure (Cloud + DevOps) <span>Expert</span></div>
+                        <div class="skill-badge" style="border-color: var(--accent)">Node.js <span>Expert</span></div>
+                        <div class="skill-badge">Spring Boot, Java <span>Inter.</span></div>
+                        <div class="skill-badge">Spark, Databricks <span>Inter.</span></div>
+                        <div class="skill-badge">MS SQL, MongoDB, Cosmos, Spanner <span>Inter.</span></div>
+                        <div class="skill-badge">Nginx <span>Inter.</span></div>
+                        <div class="skill-badge">Angular <span>Inter.</span></div>
+                        <div class="skill-badge">Python <span>Beginner</span></div>
+                    </div>
+                </section>
+
+                <!-- Projects Section -->
+                <section id="projects" style="margin-top: 2rem;">
+                    <h2><i class="ri-folder-open-line"></i> Key Projects</h2>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <h4>Trainable Motion-controlled Robotic ARM</h4>
+                            <p>Motion control via Leap Motion integration, communication to the robot via Python sockets. Won 1st place at Bosch Hackathon 2016.</p>
+                        </div>
+                        <div class="project-card">
+                            <h4>Virtual Operating System (CLU)</h4>
+                            <p>An Operating system interface built in C++ using graphics.h. Featured a text editor, paint application, file browser, chess, and user login.</p>
+                        </div>
+                        <div class="project-card">
+                            <h4>Cloud Computing PAAS</h4>
+                            <p>Implemented a Platform-as-a-Service system using OpenStack and Linux Containers (LXC).</p>
+                        </div>
+                        <div class="project-card">
+                            <h4>OpenNoteWare</h4>
+                            <p>A web application platform for students and teachers to seamlessly upload and share academic college notes.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Achievements -->
+                <section id="achievements" style="margin-top: 2rem;">
+                    <h2><i class="ri-trophy-line"></i> Achievements & Hackathons</h2>
+                    <ul class="plain-list" style="color: var(--text-muted); font-size: 0.95rem;">
+                        <li><strong>Google Kickstart 2017:</strong> Practice Round Rank 23 | APAC Round E Rank 85.</li>
+                        <li><strong>ACM ICPC:</strong> Attended Chennai Regional Round (Rank 46).</li>
+                        <li><strong>Bosch Hackathon:</strong> 1st Place Winners (Rise of Connected Machines). Invited to present flagship project at #BSM16.</li>
+                        <li><strong>PES University:</strong> 1st place in college fest coding competition & AlCoding competition on HackerEarth.</li>
+                    </ul>
+                </section>
+
+                <!-- Education -->
+                <section id="education" style="margin-top: 2rem;">
+                    <h2><i class="ri-graduation-cap-line"></i> Education</h2>
+                    <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                        <div class="edu-item">
+                            <h4>PES University</h4>
+                            <p>B.Tech in Computer Science Engineering (Graduated 2018)</p>
+                            <p style="font-size: 0.85rem; color: var(--accent);">Specialization in Algorithms & Computing Models | Major CGPA: 8.88, Minor (ECE) CGPA: 8.0</p>
+                        </div>
+                        <div class="edu-item">
+                            <h4>Sri Vani Education Center</h4>
+                            <p>Till 12th Grade (12th: 91.6% | 10th CGPA: 9.6)</p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Jatin Padichatira Mohan. Built with clean HTML & CSS.</p>
+        </footer>
+    </div>
+
+</body>
 </html>
